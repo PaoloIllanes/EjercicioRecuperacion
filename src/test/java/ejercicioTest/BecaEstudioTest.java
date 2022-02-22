@@ -17,6 +17,8 @@ public class BecaEstudioTest {
     public static void before(){
         MockedStatic<Helper> mocked = Mockito.mockStatic(Helper.class);
         mocked.when(()->Helper.aplicaBeca(234)).thenReturn(true);
+        mocked.when(()->Helper.aplicaBeca(444)).thenReturn(true);
+        mocked.when(()->Helper.aplicaBeca(555)).thenReturn(true);
         mocked.when(()->Helper.aplicaBeca(222)).thenReturn(true);
         mocked.when(()->Helper.aplicaBeca(333)).thenReturn(false);
     }
@@ -49,8 +51,37 @@ public class BecaEstudioTest {
 
 
     }
+
     @Test
     public void verifyBeca3()  {
+
+
+        Mockito.when(utils.getNota(444)).thenReturn(89);
+        BecaDeEstudio becaDeEstudio = new BecaDeEstudio(utils);
+        String actualResult = becaDeEstudio.aplicaBeca(444);
+        String expectedResult = "NO APLICA A BECA POR PROMEDIO ACADEMICO";
+        Assertions.assertEquals(expectedResult,actualResult,"Error respuesta incorrecta");
+        Mockito.verify(utils).getNota(444);
+
+
+    }
+
+    @Test
+    public void verifyBeca4()  {
+
+
+        Mockito.when(utils.getNota(555)).thenReturn(91);
+        BecaDeEstudio becaDeEstudio = new BecaDeEstudio(utils);
+        String actualResult = becaDeEstudio.aplicaBeca(555);
+        String expectedResult = "SI APLICA A BECA";
+        Assertions.assertEquals(expectedResult,actualResult,"Error respuesta incorrecta");
+        Mockito.verify(utils).getNota(555);
+
+
+    }
+
+    @Test
+    public void verifyBeca5()  {
 
 
         Mockito.when(utils.getNota(333)).thenReturn(90);
