@@ -55,10 +55,10 @@ public class BecaEstudioTest {
 
         Mockito.when(utils.getNota(333)).thenReturn(90);
         BecaDeEstudio becaDeEstudio = new BecaDeEstudio(utils);
-        String actualResult = becaDeEstudio.aplicaBeca(222);
-        String expectedResult = "NO APLICA A BECA POR PROMEDIO ACADEMICO";
+        String actualResult = becaDeEstudio.aplicaBeca(333);
+        String expectedResult = "EL ESTUDIANTE NO CURSO AUN EL 60% DE LAS MATERIAS";
         Assertions.assertEquals(expectedResult,actualResult,"Error respuesta incorrecta");
-        Mockito.verify(utils).getNota(222);
+
 
 
     }

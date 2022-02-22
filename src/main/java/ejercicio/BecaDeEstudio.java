@@ -17,7 +17,7 @@ public String aplicaBeca(int ci){
     if(Helper.aplicaBeca(ci)){
 
         note = utils.getNota(ci);
-        if(note<90){
+        if(note>=90){
             msg="SI APLICA A BECA";
         }else{
             msg="NO APLICA A BECA POR PROMEDIO ACADEMICO";
